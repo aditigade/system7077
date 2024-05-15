@@ -1,0 +1,84 @@
+#!/bin/bash
+
+# Function to display menu
+display_menu() {
+    echo "String Handling Menu"
+    echo "1. Concatenate Strings"
+    echo "2. Find Length of String"
+    echo "3. Extract Substring"
+    echo "4. Convert to Uppercase"
+    echo "5. Convert to Lowercase"
+    echo "6. Reverse String"
+    echo "7. Exit"
+}
+
+# Function to concatenate strings
+concatenate_strings() {
+    echo "Enter first string:"
+    read string1
+    echo "Enter second string:"
+    read string2
+    concatenated_string="$string1$string2"
+    echo "Concatenated string: $concatenated_string"
+}
+
+# Function to find length of a string
+find_string_length() {
+    echo "Enter a string:"
+    read string
+    length=${#string}
+    echo "Length of string '$string' is $length"
+}
+
+# Function to extract substring
+extract_substring() {
+    echo "Enter a string:"
+    read string
+    echo "Enter starting index:"
+    read start
+    echo "Enter length:"
+    read len
+    substring=${string:start:len}
+    echo "Substring: $substring"
+}
+
+# Function to convert string to uppercase
+convert_to_uppercase() {
+    echo "Enter a string:"
+    read string
+    uppercase_string=$(echo "$string" | tr '[:lower:]' '[:upper:]')
+    echo "Uppercase string: $uppercase_string"
+}
+
+# Function to convert string to lowercase
+convert_to_lowercase() {
+    echo "Enter a string:"
+    read string
+    lowercase_string=$(echo "$string" | tr '[:upper:]' '[:lower:]')
+    echo "Lowercase string: $lowercase_string"
+}
+
+# Function to reverse a string
+reverse_string() {
+    echo "Enter a string:"
+    read string
+    reversed_string=$(echo "$string" | rev)
+    echo "Reversed string: $reversed_string"
+}
+
+# Main script
+while true; do
+    display_menu
+    echo "Enter your choice:"
+    read choice
+    case $choice in
+        1) concatenate_strings ;;
+        2) find_string_length ;;
+        3) extract_substring ;;
+        4) convert_to_uppercase ;;
+        5) convert_to_lowercase ;;
+        6) reverse_string ;;
+        7) echo "Exiting..."; break ;;
+        *) echo "Invalid option. Please select again." ;;
+    esac
+done
